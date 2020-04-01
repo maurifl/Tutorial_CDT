@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Poppins;
+}
+
+body .video { 
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: fixed;    
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); 
+    z-index: -100;
+    background-size: cover;
+  }
+
+.navbar{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #acdafc73;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+}
+
+.nav{
+    display: flex;
+    justify-content: right;
+    list-style: none;
+}
+
+.link-etapa{
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 500px;
+    margin-top: 120px;
+    margin-left: 34vw;
+    color: rgb(0, 0, 119);
+    list-style: none;
+}
+
+.link-etapa a{
+    color: rgb(0, 0, 119);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.logo{
+    box-sizing: content-box;
+    flex: 1 1 auto;
+    letter-spacing: 1px;
+    float: left;
+}
+
+.img-logo{
+    position: relative;
+    flex: 10 1 auto;
+}
+
+a{
+    margin: 15px;
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+    padding: 5px -2 -2 -2;
+}
+
+a.active{
+    background: #2681c4;
+    color: #ffffff;
+}
+
+a:hover{
+    background: #2681c4;
+    color: #ffffff;
+}
+
+.banner-area{
+    position: relative;
+    background-image: url(img/Clouds.mp4);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.about-area, .portfolio-area, .services-area, .contact-area{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 700px;
+}
+
+.text-part{
+    width: 65%;
+    height: 80%;
+}
+
+h1{
+    font-size: 50px;
+    font-family: Audiowide;
+}
+
+p{
+    font-size: 24px;
+    line-height: 40px;
+}
+
+ol{
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.lin{
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+}
+
+@media(max-width:700px){
+    p{
+        width: 100%;
+    }
+}
+
+.about-area, .services-area{
+    background: #fefefe;
+}
+
+.portfolio-area, .contact-area{
+    background: #2626264d;
+    color: #ffffff;
+}
+
+.portfolio-area{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/**************** E-MAIL ****************/
+
+form{
+    width: 600px;
+    margin: auto;
+    background: rgba(0,0,0,0.4);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 85px;
+    border-radius: 10px;
+}
+
+.h2{
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+input, textarea{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 17px;
+    border: none;
+}
+
+textarea{
+    min-height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+#boton{
+    background: rgba(49, 56, 74, 0.521);
+    color: #ffffff;
+    padding: 20px;
+    text-transform: uppercase;
+    border-radius: 0 0 10px 10px;
+}
+
+#boton:hover{
+    cursor: pointer;
+    transition: .5s;
+    background: #2682c47a;
+    border: none;
+}
+
+@media(max-width:700px){
+    form{
+        width: 100%;
+    }
+}
+
+/****************************************/
+
+/* UNIDADES
+VH -> viewport height = altura del viewport
+VW -> viewport width = ancho del viewport
+EM -> 
+REM ->
+*/
