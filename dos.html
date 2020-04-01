@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide|Poppins:400,700&display=swap" rel="stylesheet">
+
+        <title>Prueba - Sticky Menu</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="img-logo"><img src="img/logo.svg" class="logo" style="text-align: left;"></div>
+            <div>
+                <ul class="nav">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--********************** PASO 1 **********************-->
+        <div class="about-area" id="paso1">
+            <div class="text-part"><br><br>
+                <h1>Generar Certificado HTTPS </h1><br>
+                <p>
+                    <ol>Al iniciar postman, verás una pantalla como esta. No elijas ninguna de esas opciones, solo cierra la pantalla</ol> <br>
+                    <img class="imgpantalla" src="img/postman1.svg" alt="Imagen postman1"><br><br>
+                    <h1>Consultar RESTful web services con parámetros GET</h1><br>   
+                    <ol>En la pantalla principal vamos a ver una ventana como esta.</ol><br>
+                    <img class="imgpantalla" src="img/postman2.svg" alt="Imagen postman2"><br>
+                    <ol>Ahora voy a describirte lo más importante (he numerado la imagen para hacer referencia a sus partes)</ol><br>
+                    <li class="lin">1 - Aquí puedes definir el método que vas a usar, por ejemplo GET, POST, DELETE, etc</li>
+                    <li class="lin">2 - Aquí colocas la dirección del servicio RESTful</li>
+                    <li class="lin">3 - Usualmente llamas al servicio usando parámetros, así que si presionas el botón Params, se activa una sección (4) en donde puedes agregar parámetros.</li>
+                    <li class="lin">4 - Aquí puedes agregar parámetros que se envían junto con la dirección (URL), debes escribir el nombre de la clave (key) y su valor (value). En la imagen yo agregue la clave id, con valor 1</li>
+                    <li class="lin">5 - Finalmente presionas el botón Send para enviar la petición.</li><br>
+                </p>
+                <h1>Como leer la respuesta en un formato amigable</h1><br>
+                <ol>Al ejecutar una petición a un servicio RESTful, vas a ver una pantalla como esta</ol>
+                <img class="imgpantalla" src="img/postman3.svg" alt="Imagen postman3"><br><br>
+                <ol>
+                    Como ves, es difícil de leer la respuesta, pero podemos hacer que nos muestre la respuesta en un formato más 
+                    ordenado. Para eso debemos presionar el botón Pretty y seleccionar el formato JSON, esto hará que la salida 
+                    se pueda leer claramente. También ten en cuenta que puedes leer el código de respuesta (por ejemplo 200 ok), 
+                    el tiempo que se tardó el servicio RESTful en responder y el tamaño de la respuesta.
+                </ol><br>
+                <img class="imgpantalla" src="img/postman4.svg" alt="Imagen postman4"><br><br>
+                <h1>Como enviar parámetros POST (form-data) con postman</h1><br>
+                <ol>
+                    Para enviar los parámetros por el método post,  primero debemos hacer clic sobre el enlace Body, luego debemos 
+                    verificar que este seleccionada la opción form-data. Esto activa la sección para ingresar parámetros que se 
+                    envían en el cuerpo, como los que se envían a través de formularios. Aquí agregamos los parámetros que 
+                    necesitemos ingresado su clave y su valor, luego presionamos el botón Send.
+                </ol><br>
+                <img class="imgpantalla" src="img/postman5.svg" alt="Imagen postman5"><br><br><br>
+                <a href="index.html"><input type="button" value="Inicio" id="boton"></a>
+            </div>
+        </div>
+    </body>
+</html>
