@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide|Poppins:400,700&display=swap" rel="stylesheet">
+
+        <title>Certificados de cliente</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="img-logo"><img src="img/logo.svg" class="logo" style="text-align: left;"></div>
+            <div>
+                <ul class="nav">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area" id="paso1">
+            <div class="text-part"><br><br>
+                <h1>Cómo generar los certificados de cliente</h1><br>
+                    <ol>Para generar el certificado del lado del cliente .cer tenemos que hacer:</ol><br>
+                    <li>Abrimos nuestro <b>IIS</b> y seleccionamos el servidor general en diagrama de árbol.</li>
+                    <li>En el cuadro central en iis buscamos <b>Certificados de Servidor</b> y hacemos doble click.</li>
+                    <li>Buscamos el certificado generado y lo exportamos indicando el lugar a guardar, contraseña, 
+                        confirmación y nombre a identificar luego lo exportamos.</li>
+                    <li>Vamos a la carpeta donde se guardo el archivo generado anteriormente y botón derecho del mouse <b>instalar PFX</b>.</li>
+                    <li>Se abre un panel donde debemos seleccionar en este caso <b>Usuario Actual</b> siguiente y siguiente.</li>
+                    <li>Colocamos la <b>Contraseña</b> que le pusimos al pfx, siguiente.</li>
+                    <li>Siguiente y Finalizar.</li>
+                    <li>Luego de generado el certificado, vamos donde se guardó y damos click derecho <b>Instalar Certificado</b>.</li>
+                    <li>Seleccionamos en este ejemplo <b>Usuario Actual</b>.</li>
+                    <li>Siguiente, siguiente y finalizar.</li><br><br>
+
+                    <div class="nevega">
+                        <div class="anterior">
+                            <a href="#"><input type="button" value="arriba" id="ant"></a>
+                        </div>
+                        <div class="siguiente">
+                            <a href="index.html"><input type="button" value="anterior" id="sig"></a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="index.html"><input type="button" value="inicio" id="boton"></a>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>

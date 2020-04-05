@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Audiowide|Poppins:400,700&display=swap" rel="stylesheet">
 
-        <title>Prueba - Sticky Menu</title>
+        <title>Cómo genrear los certificados</title>
     </head>
     <body>
         <div class="navbar">
@@ -19,42 +19,103 @@
                 </ul>
             </div>
         </div>
-        <!--********************** PASO 1 **********************-->
         <div class="about-area" id="paso1">
             <div class="text-part"><br><br>
-                <h1>Generar Certificado HTTPS </h1><br>
-                <p>
-                    <ol>Al iniciar postman, verás una pantalla como esta. No elijas ninguna de esas opciones, solo cierra la pantalla</ol> <br>
-                    <img class="imgpantalla" src="img/postman1.svg" alt="Imagen postman1"><br><br>
-                    <h1>Consultar RESTful web services con parámetros GET</h1><br>   
-                    <ol>En la pantalla principal vamos a ver una ventana como esta.</ol><br>
-                    <img class="imgpantalla" src="img/postman2.svg" alt="Imagen postman2"><br>
-                    <ol>Ahora voy a describirte lo más importante (he numerado la imagen para hacer referencia a sus partes)</ol><br>
-                    <li class="lin">1 - Aquí puedes definir el método que vas a usar, por ejemplo GET, POST, DELETE, etc</li>
-                    <li class="lin">2 - Aquí colocas la dirección del servicio RESTful</li>
-                    <li class="lin">3 - Usualmente llamas al servicio usando parámetros, así que si presionas el botón Params, se activa una sección (4) en donde puedes agregar parámetros.</li>
-                    <li class="lin">4 - Aquí puedes agregar parámetros que se envían junto con la dirección (URL), debes escribir el nombre de la clave (key) y su valor (value). En la imagen yo agregue la clave id, con valor 1</li>
-                    <li class="lin">5 - Finalmente presionas el botón Send para enviar la petición.</li><br>
-                </p>
-                <h1>Como leer la respuesta en un formato amigable</h1><br>
-                <ol>Al ejecutar una petición a un servicio RESTful, vas a ver una pantalla como esta</ol>
-                <img class="imgpantalla" src="img/postman3.svg" alt="Imagen postman3"><br><br>
-                <ol>
-                    Como ves, es difícil de leer la respuesta, pero podemos hacer que nos muestre la respuesta en un formato más 
-                    ordenado. Para eso debemos presionar el botón Pretty y seleccionar el formato JSON, esto hará que la salida 
-                    se pueda leer claramente. También ten en cuenta que puedes leer el código de respuesta (por ejemplo 200 ok), 
-                    el tiempo que se tardó el servicio RESTful en responder y el tamaño de la respuesta.
-                </ol><br>
-                <img class="imgpantalla" src="img/postman4.svg" alt="Imagen postman4"><br><br>
-                <h1>Como enviar parámetros POST (form-data) con postman</h1><br>
-                <ol>
-                    Para enviar los parámetros por el método post,  primero debemos hacer clic sobre el enlace Body, luego debemos 
-                    verificar que este seleccionada la opción form-data. Esto activa la sección para ingresar parámetros que se 
-                    envían en el cuerpo, como los que se envían a través de formularios. Aquí agregamos los parámetros que 
-                    necesitemos ingresado su clave y su valor, luego presionamos el botón Send.
-                </ol><br>
-                <img class="imgpantalla" src="img/postman5.svg" alt="Imagen postman5"><br><br><br>
-                <a href="index.html"><input type="button" value="Inicio" id="boton"></a>
+                <h1>Cómo generar los certificados</h1><br>
+                    <ol>Al iniciar, abrir Windows PowerShell (Inicio - > Ejecutar -> PowerShell -> enter)</ol><br>
+                    <img class="imgpantalla" src="img/auto1.svg" alt="Imagen auto1"><br>
+
+                    <ol>Ingresar <b>Get-Command -Module PKI</b></ol>
+                    <img class="imgpantalla" src="img/auto2.svg" alt="Imagen auto2">
+
+                    <ol>Con <b>New-SelfSignedCertificate</b> con las diferentes personalizaciones exclusivas, 
+                        en este caso es para migración de máquinas virtuales a Azure desde una plataforma OnPremises, 
+                        todo depende del tipo de certificado, longitud de RSA, algoritmo que utiliza. Es la 
+                        personalización que se le deberá dar al tipo de certificado.  
+                    </ol>
+                    <img class="imgpantalla" src="img/auto3.svg" alt="Imagen auto3"><br><br>
+                    
+                    <ol>Abrimos una consola MMC (Inicio -> Ejecutar -> mmc -> enter)</ol>
+                    <img class="imgpantalla" src="img/auto4.svg" alt="Imagen auto4"><br><br>
+                    
+                    <ol>Archivo -> Agregar o quitar complemento</ol>
+                    <img class="imgpantalla" src="img/auto5.svg" alt="Imagen auto5"><br><br>
+
+                    <ol>Seguidamente buscamos el complemento disponible: Certificados y pulsamos Agregar. Le 
+                        decimos que sí para la cuenta de usuario y pulsamos finalizar y Aceptar.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto6.svg" alt="Imagen auto6"><br><br>
+
+                    <ol>En Certificados de usuario actual, expandimos. Vamos a Personal -> Certificados. Vemos 
+                        que el certificado que se creó figura en el listado. Al dar doble click, vemos que el 
+                        certificado aún no está avalado por una entidad de certificación (CA) o no es de 
+                        confianza.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto7.svg" alt="Imagen auto7"><br><br>
+
+                    <ol>Para lograr la confianza del certificado vamos a exportarlo. Hacemos click derecho en el 
+                        certificado -> todas las tareas -> Exportar
+                    </ol>
+                    <img class="imgpantalla" src="img/auto8.svg" alt="Imagen auto8"><br><br>
+
+                    <ol>Hacemos click en <b>siguiente -> marcamos si, exportar la clave privada y marcamos los tres 
+                        primeros ítems</b> menos habilitar la privacidad de certificado y siguiente
+                    </ol>
+                    <img class="imgpantalla" src="img/auto9.svg" alt="Imagen auto9"><br><br>
+
+                    <ol>Establecemos una contraseña y su confirmación que nos pedirá al momento de instalar el 
+                        certificado, siguiente, indicamos dónde colocarlo con examinar y le damos un nombre al 
+                        archivo, guardar. Luego clickeamos en siguiente y por último en finalizar.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto10.svg" alt="Imagen auto10"><br><br>
+
+                    <ol>Sobre el certificado exportado le damos doble click, nos abrirá una ventana donde 
+                        indicamos utilizar la opción de <b>Usuario actual</b>, siguiente -> siguiente</ol>
+                    <img class="imgpantalla" src="img/auto11.svg" alt="Imagen auto11"><br><br>
+
+                    <ol>Marcamos la opción <b>Colocar los certificados en el siguiente almacén</b>, examinar y 
+                        buscamos <b>Entidades de certificación raíz de confianza</b>, marcamos y aceptamos. 
+                        Clickeamos en siguiente y finalizar.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto12.svg" alt="Imagen auto12"><br><br>
+
+                    <ol>Nos aparecerá un mensaje de que está a punto de instalar un certificado de una 
+                        entidad certificadora ca, click en <b>SI</b>, aparecerá un mensaje de confirmación de que 
+                        la importación se completó correctamente, aceptar.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto13.svg" alt="Imagen auto13"><br><br>
+
+                    <ol>Para comprobar, vamos a <b>Entidades de certificación raíz de confianza -> Certificados</b>, 
+                        y buscamos el nombre del certificado que creamos, otra manera de verlo es hacer <b>doble 
+                        click</b> en el certificado ubicado en <b>Personal -> Certificados -> [nombre del certificado creado]</b>
+                        y aparecerá datos del certificado.
+                    </ol>
+                    <img class="imgpantalla" src="img/auto14.svg" alt="Imagen auto14"><br><br>
+
+                    <ol>ste certificado exportado es el mismo que ahora vamos a exportar con extensión .cer lo 
+                        hacemos de este modo: 
+                        <b>Personal -> Certificados -> [nombre del certificado] -> botón derecho -> Todas las tareas -> Exportar</b>, 
+                        siguiente acá nos muestra que es del tipo .cer, siguiente nos envía a colocar un nombre y su lugar 
+                        dónde lo guardaremos
+                    </ol>
+                    <img class="imgpantalla" src="img/auto15.svg" alt="Imagen auto15"><br><br>
+
+                    <ol>Este último certificado .cer o certificado de seguridad generado, es el que vamos a subir a nuestro 
+                        servicio como por ej Microsoft Azure o cualquier otro servicio, de esta manera es el proceso de 
+                        crear certificados CA autofirmados.
+                    </ol><br><br>
+
+                    <div class="nevega">
+                        <div class="anterior">
+                            <a href="parte_2.html"><input type="button" value="siguiente" id="ant"></a>
+                        </div>
+                        <div class="siguiente">
+                            <a href="index.html"><input type="button" value="anterior" id="sig"></a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="index.html"><input type="button" value="inicio" id="boton"></a>
+                    </div>
             </div>
         </div>
     </body>

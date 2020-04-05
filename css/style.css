@@ -219,6 +219,55 @@ textarea{
     }
 }
 
+/******************** BOTONES FOOTER ****************************************/
+
+.navega{
+    overflow: hidden;
+}
+
+.siguiente{
+    float: left;
+    width: 49%;
+}
+
+.anterior{
+    float: right;
+    width: 49%;
+}
+
+#sig{
+    border-radius: 10px 0 0 0;
+    background: rgba(49, 56, 74, 0.521);
+    padding: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+#sig:hover{
+    cursor: pointer;
+    transition: .5s;
+    background: #2682c47a;
+    border: none;
+}
+
+#ant{
+    border-radius: 0 10px 0 0;
+    background: rgba(49, 56, 74, 0.521);
+    padding: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+#ant:hover{
+    cursor: pointer;
+    transition: .5s;
+    background: #2682c47a;
+    border: none;
+}
+
+
+
+
 /****************************************/
 
 /* UNIDADES

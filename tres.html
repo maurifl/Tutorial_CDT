@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide|Poppins:400,700&display=swap" rel="stylesheet">
+
+        <title>Cambiar Postman a HTTPS</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="img-logo"><img src="img/logo.svg" class="logo" style="text-align: left;"></div>
+            <div>
+                <ul class="nav">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area" id="paso1">
+            <div class="text-part"><br><br>
+                <h1>Cambiar Postman a HTTPS</h1><br>
+                    <ol>Permite seleccionar el Verbo HTTP que vamos a probar, apuntar a la URL de nuestra 
+                        API, colocar encabezados, y en cuanto al BODY de nuestra petición se puede hacer en 
+                        diferentes formatos, ejemplo application/json o application/x-www-form-urlencoded o 
+                        multipart/form-data, entre muchos otros. <br><br>
+                        El problema es cuando estamos haciendo nuestras API subiendo un servidor Web por el 
+                        puerto 443 con certificados autofirmados. Es decir, si tenemos Postman como un plugin 
+                        de chrome y queremos hacer pruebas de nuestra API que se encuentra en 
+                        la URL: <b>https://localhost/api/recurso</b>, Postman nos generará un error debido a que el 
+                        certificado autofirmado no es seguro. Si ingresamos desde chrome y digitamos 
+                        <b>https://localhost</b> nos aparecerá esta advertencia:
+                    </ol><br>
+
+                    <img class="imgpantalla" src="img/tres1.svg" alt="Imagen auto1"><br>
+
+                    <ol>Bien, pues debido a que los navegadores advierten sobre posibles problemas de seguridad 
+                        cuando el certificado no es válido, <b>"Postman no puede realizar la petición"</b>. Así que la 
+                        solución a este problema es muy sencillo. He visto que lo que hacen algunas personas es 
+                        exportar el certificado desde el navegador y luego lo importan como un certificado de 
+                        confianza, pero es un proceso algo peligroso debido a que por ejemplo si alguien genera un 
+                        certificado con la misma autoridad certificadora (ejemplo Acme co), entonces para tu 
+                        computador ese certificado será de confianza y permitirá seguir sin problema. Así que una 
+                        mejor opción es la siguiente (siempre y cuando estés usando Postman como plugin de chrome):<br><br>
+                        
+                        Abre tu navegador chrome y en la barra de direcciones digita: <b>chrome://flags/</b><br><br>
+
+                        Ten cuidado con esta ventana ya que puedes habilitar características que vuelvan inestable 
+                        tu navegador. <br><br>
+
+                        Luego vas a buscar la siguiente opción: <br><br>
+
+                        Si tu navegador está en español: <b>Permitir certificados no válidos para los recursos cargados 
+                        desde el host local.</b><br><br> 
+                        
+                        Si tu navegador está en inglés: <b>Allow invalid certificates for resources  loaded from 
+                        localhost. </b><br><br>
+                        
+                        Y habilita esa opción. Luego te solicitará reiniciar chrome y listos! 
+                        Ahora el navegador chrome te permitirá ingresar a la URL <b>https://localhost</b>  sin esa advertencia 
+                        donde debes autorizar manualmente el ingreso a la página, y Postman ya te permitirá hacer las 
+                        pruebas pertinentes. <br><br>
+
+                        A diferencia de importar el certificado, con esta opción estás seguro que el navegador seguirá 
+                        solicitando permiso manual para aquellas páginas que tengan un certificado no válido.                         
+                    </ol><br>
+                    <div class="nevega">
+                        <div class="anterior">
+                            <a href="#"><input type="button" value="arriba" id="ant"></a>
+                        </div>
+                        <div class="siguiente">
+                            <a href="index.html"><input type="button" value="anterior" id="sig"></a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="index.html"><input type="button" value="inicio" id="boton"></a>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>
