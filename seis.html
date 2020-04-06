@@ -22,20 +22,125 @@
         <div class="about-area" id="paso1">
             <div class="text-part"><br><br>
                 <h1>Instalación de Certificado Generado</h1><br>
-                    
-                
 
-                    <div class="nevega">
-                        <div class="anterior">
-                            <a href="#"><input type="button" value="arriba" id="ant"></a>
-                        </div>
-                        <div class="siguiente">
-                            <a href="index.html"><input type="button" value="anterior" id="sig"></a>
-                        </div>
+                <h2>Tipos de formatos más frecuentes de certificados</h2><br>
+                <li><b>.CSR (Certificate Signing Request)</b>: Sería el archivo generado normalmente por el 
+                        servidor que usará el certificado SSL. El CSR contiene información relativa a la 
+                        organización.
+                </li><br>
+                <li><b>.KEY</b>: Es el archivo de clave de privada para cifrar las solicitudes.</li><br>
+                <li><b>.DER (Distinguish Encoding Rules)</b>: Suelen tener la extensión CRT o 
+                        CER. Es un tipo de codificación de certificados X.509, NO un tipo de certificado. 
+                        Es un formato binario o raw.
+                </li><br>
+                <li><b>.CRT .CERT .CER .PEM (Privacy Enhanced Mail)</b>: Ambos son usados indistintamente. 
+                       .pem contiene el certificado y la clave, mientras que un fichero .crt solo contiene 
+                       el certificado.
+                </li><br>
+                <li><b>.CRL (Certificate Revocation List)</b>: Fichero que contiene una lista de recovación 
+                        de certificados.
+                </li><br>
+                <li><b>.P7B .P7C</b>: Estructura PKCS#7 SignedData sin datos, solo certificado(s) o CRL(s).</li><br>
+                <li><b>.PKCS12 (PKCS #12) .P12 .PFX</b>: Se usa en servidores Windows. Cotiene todos los 
+                       archivos en un único archivo, tanto la clave pública como la clave privada asociada, 
+                       generada por el servidor en el momento en el que se generó el CSR.
+                </li><br>
+                <ol>Si necesitamos extraer la clave privada podemos usar <b>OpenSSL</b> el cual utilizará uno de los 
+                    estándares de criptografía <b>PKCS (Public-Key Cryptography Standards)</b> concretamente 
+                    <b>PKCS#12 (formatos .PFX)</b> que define un formato de fichero usado comúnmente para almacenar 
+                    claves privadas con su certificado de clave pública protegido mediante clave simétrica 
+                    (es decir, una passphrase o contraseña).
+                </ol><br>
+                
+                <h2>Exportamos el certificado autofirmado del servidor IIS. Estará en formato PKCS#12</h2>
+                <img class="imgpantalla" src="img/seis1.png" alt="Imagen seis1"><br>
+                <h6>Exportando certificado desde certmgr.msc</h6><br>
+                <ol>Podemos exportar dicho certificado del propio equipo local a través de la consola de Microsoft 
+                    para la administración de certificados <b>certmgr.msc. Agregar administrador de certificados a 
+                    través de un MMC</b>. En el asistente de exportación <b>nos permite la opción de incluir la clave 
+                    privada en el certificado</b>.
+                </ol><br>
+                <ol><b>Descargar OpenSSL para Windows</b>: A través de una CLI de Windows Server ejecutamos OpenSSL con 
+                    PKCS12 para la obtención de la clave privada del certificado. Tendremos que extraer el 
+                    certificado (clave pública), la clave privada (nos pedirá la contraseña en ambos casos) y finalmente 
+                    eliminar el passphrase de la clave privada extraída.
+                </ol><br>
+                <img class="imgpantalla" src="img/seis2.png" alt="Imagen seis2"><br>
+                <h6>Usando OpenSSL para la extracción de certificados.</h6><br>
+                
+                <h2>Extraer la clave pública del certificado .pfx</h2><br>
+                <span style="background-color: lightgray; padding:5px;">openssl pkcs12 -in certificado.pfx -out 
+                    clavepublica.pem -nokeys
+                </span><br><br>
+                <ol>
+                    <dt><b>certificado.pfx</b> : Certificado pfx del servidor.</dt> 
+                    <dt><b>clavepublica.pem</b> : Clave pública. <b>(También se podría exportar a un formato de salida .crt o .cer)</b>.</dt> 
+                    <dt><b>-nokeys</b>: Separará la clave pública de la clave privada del certificado .pfx.</dt> 
+                </ol><br>
+                <img class="imgpantalla" src="img/seis3.png" alt="Imagen seis3">
+                <h6>Fichero de salida de la clave pública.</h6><br>
+                
+                <h2>Extraer la clave pública del certificado .pfx</h2><br>
+                <span style="background-color: lightgray; padding:5px;">openssl pkcs12 -in certificado.pfx -out 
+                    claveprivada.pem -nocerts -nodes
+                </span><br><br>
+                <dt><b>certificado.pfx</b>: Certificado pfx del servidor.</dt>
+                <dt><b>claveprivada.pem</b>: Clave privada. (También se podría exportar a un formato de salida .crt o .cer).</dt>
+                <dt><b>-nocerts</b>: Separará la clave privada de la clave pública del certificado .pfx.</dt>
+                <dt><b>-nodes</b>: No cifra la salida de la clave privada (quedando visible en texto plano).</dt><br>
+                <img class="imgpantalla" src="img/seis4.png" alt="Imagen seis4"><br><br>    
+                <dt>Con esto finalmente tendremos la clave privada sin contraseña para poder utilizarla en lo que nos sea necesario.</dt><br>
+                
+                <h2>Convertir certificados CRT, CRT (CA) y clave privada .key a un solo archivo PFX</h2><br>
+                <ol>En el caso de tener el archivo .crt del certificado en sí, el archivo .crt de la CA y el archivo de la clave 
+                    privada en un .key. Para poder fusionar estos tres ficheros en un solo fichero .pfx (PKCS #12 por lo general, 
+                    usado en sistemas Windows).
+                </ol><br>
+                <span style="background-color: lightgray; padding:5px;">openssl pkcs12 -export -out certificate.pfx -inkey rsaprivate.key -in <br></span>
+                <span style="background-color: lightgray; padding:5px;">certificate.crt -certfile fileca.crt</span><br><br>
+                <dt><b>certificate.pfx</b>: Certificado de salida en formato pfx.</dt>
+                <dt><b>rsaprivate.key</b>: La clave privada.</dt>
+                <dt><b>certificate.crt</b>: La clave pública.</dt>
+                <dt><b>fileca.crt</b>: Fichero de autoridad de la entidad de certificadora (CA)</dt><br>
+
+                <h2>Instalar certificado en postman</h2>
+                <ol>luego de tener los certificados .pfx y .crt podemos instalarlo en postman, de la siguiente manera:</ol><br>
+                <dt>Ejecutamos <b>Postman</b></dt><br>
+                <img class="imgpantalla" src="img/seis5.png" alt="Imagen seis5"><br><br>
+                <dt>Nos dirigimos al <b>ícomo de la llave inglesa</b></dt><br>
+                <img class="imgpantalla" src="img/seis6.png" alt="Imagen seis6"><br><br>
+                <dt>Desplegamos clickeamos en <b>Settings</b></dt><br>
+                <img class="imgpantalla" src="img/seis7.png" alt="Imagen seis7"><br><br>
+                <dt>En este cuadro que nos aparece clickeamos en<b> Certificates</b></dt><br>
+                <img class="imgpantalla" src="img/seis8.png" alt="Imagen seis8"><br><br>
+                <dt>Abierta la opción de certificates hacemos click en <b>Add Certificate</b></dt><br>
+                <img class="imgpantalla" src="img/seis9.png" alt="Imagen seis9"><br><br>
+                <dt>En este nuevo cuadro nos muestra varios campos a completar.</dt>
+                <img class="imgpantalla" src="img/seis10.png" alt="Imagen seis10"><br><br>
+
+                <dt><b>Host</b>: colocamos el <b>localhost</b> en nuestro caso será <b>http://localhost:5500/index.html</b>.</dt><br>
+                <dt><b>CRT file</b>: al ingresar en esta opción se desplegará un cuadro dónde deberemos <b>buscar el archivo crt creado</b>.</dt>
+                <dt>seleccionamos el certificado y clickeamos en <b>Abrir</b>.</dt>
+                <img class="imgpantalla" src="img/seis11.png" alt="Imagen seis11"><br><br>
+                <dt><b>KEY file</b>: esta opción solo se completará en el caso de que el certificado sea de una <b>CA </b>pagado.</dt><br>
+                <dt><b>PFX file</b>: similar al caso del certificado crt solo que ahora seleccionaremos el archivo .pfx y <b>Abrir</b>.</dt>
+                <img class="imgpantalla" src="img/seis11.png" alt="Imagen seis11"><br><br>
+                <dt><b>Passphrase</b>: colocamos el mismo password que al momento de crear los certificados.</dt>
+                <img class="imgpantalla" src="img/seis12.png" alt="Imagen seis12"><br><br>
+                <dt><b>Add</b>: por último clickeamos en add.</dt>
+                <img class="imgpantalla" src="img/seis13.png" alt="Imagen seis13"><br><br>
+
+                <div class="nevega">
+                    <div class="anterior">
+                        <a href="#"><input type="button" value="arriba" id="ant"></a>
                     </div>
-                    <div>
-                        <a href="index.html"><input type="button" value="inicio" id="boton"></a>
+                    <div class="siguiente">
+                        <a href="index.html"><input type="button" value="anterior" id="sig"></a>
                     </div>
+                </div>
+                <div>
+                    <a href="index.html"><input type="button" value="inicio" id="boton"></a>
+                </div>
             </div>
         </div>
     </body>
