@@ -53,7 +53,7 @@
                 </ol><br>
                 
                 <h2>Exportamos el certificado autofirmado del servidor IIS. Estará en formato PKCS#12</h2>
-                <img class="imgpantalla" src="img/seis1.png" alt="Imagen seis1"><br>
+                <img class="imgpantalla" src="img/seis1.svg" alt="Imagen seis1"><br>
                 <h6>Exportando certificado desde certmgr.msc</h6><br>
                 <ol>Podemos exportar dicho certificado del propio equipo local a través de la consola de Microsoft 
                     para la administración de certificados <b>certmgr.msc. Agregar administrador de certificados a 
@@ -65,7 +65,7 @@
                     certificado (clave pública), la clave privada (nos pedirá la contraseña en ambos casos) y finalmente 
                     eliminar el passphrase de la clave privada extraída.
                 </ol><br>
-                <img class="imgpantalla" src="img/seis2.png" alt="Imagen seis2"><br>
+                <img class="imgpantalla" src="img/seis2.svg" alt="Imagen seis2"><br>
                 <h6>Usando OpenSSL para la extracción de certificados.</h6><br>
                 
                 <h2>Extraer la clave pública del certificado .pfx</h2><br>
@@ -77,7 +77,7 @@
                     <dt><b>clavepublica.pem</b> : Clave pública. <b>(También se podría exportar a un formato de salida .crt o .cer)</b>.</dt> 
                     <dt><b>-nokeys</b>: Separará la clave pública de la clave privada del certificado .pfx.</dt> 
                 </ol><br>
-                <img class="imgpantalla" src="img/seis3.png" alt="Imagen seis3">
+                <img class="imgpantalla" src="img/seis3.svg" alt="Imagen seis3">
                 <h6>Fichero de salida de la clave pública.</h6><br>
                 
                 <h2>Extraer la clave pública del certificado .pfx</h2><br>
@@ -88,7 +88,7 @@
                 <dt><b>claveprivada.pem</b>: Clave privada. (También se podría exportar a un formato de salida .crt o .cer).</dt>
                 <dt><b>-nocerts</b>: Separará la clave privada de la clave pública del certificado .pfx.</dt>
                 <dt><b>-nodes</b>: No cifra la salida de la clave privada (quedando visible en texto plano).</dt><br>
-                <img class="imgpantalla" src="img/seis4.png" alt="Imagen seis4"><br><br>    
+                <img class="imgpantalla" src="img/seis4.svg" alt="Imagen seis4"><br><br>    
                 <dt>Con esto finalmente tendremos la clave privada sin contraseña para poder utilizarla en lo que nos sea necesario.</dt><br>
                 
                 <h2>Convertir certificados CRT, CRT (CA) y clave privada .key a un solo archivo PFX</h2><br>
@@ -106,29 +106,29 @@
                 <h2>Instalar certificado en postman</h2>
                 <ol>luego de tener los certificados .pfx y .crt podemos instalarlo en postman, de la siguiente manera:</ol><br>
                 <dt>Ejecutamos <b>Postman</b></dt><br>
-                <img class="imgpantalla" src="img/seis5.png" alt="Imagen seis5"><br><br>
+                <img class="imgpantalla" src="img/seis5.svg" alt="Imagen seis5"><br><br>
                 <dt>Nos dirigimos al <b>ícomo de la llave inglesa</b></dt><br>
-                <img class="imgpantalla" src="img/seis6.png" alt="Imagen seis6"><br><br>
+                <img class="imgpantalla" src="img/seis6.svg" alt="Imagen seis6"><br><br>
                 <dt>Desplegamos clickeamos en <b>Settings</b></dt><br>
-                <img class="imgpantalla" src="img/seis7.png" alt="Imagen seis7"><br><br>
+                <img class="imgpantalla" src="img/seis7.svg" alt="Imagen seis7"><br><br>
                 <dt>En este cuadro que nos aparece clickeamos en<b> Certificates</b></dt><br>
-                <img class="imgpantalla" src="img/seis8.png" alt="Imagen seis8"><br><br>
+                <img class="imgpantalla" src="img/seis8.svg" alt="Imagen seis8"><br><br>
                 <dt>Abierta la opción de certificates hacemos click en <b>Add Certificate</b></dt><br>
-                <img class="imgpantalla" src="img/seis9.png" alt="Imagen seis9"><br><br>
+                <img class="imgpantalla" src="img/seis9.svg" alt="Imagen seis9"><br><br>
                 <dt>En este nuevo cuadro nos muestra varios campos a completar.</dt>
-                <img class="imgpantalla" src="img/seis10.png" alt="Imagen seis10"><br><br>
+                <img class="imgpantalla" src="img/seis10.svg" alt="Imagen seis10"><br><br>
 
                 <dt><b>Host</b>: colocamos el <b>localhost</b> en nuestro caso será <b>http://localhost:5500/index.html</b>.</dt><br>
                 <dt><b>CRT file</b>: al ingresar en esta opción se desplegará un cuadro dónde deberemos <b>buscar el archivo crt creado</b>.</dt>
                 <dt>seleccionamos el certificado y clickeamos en <b>Abrir</b>.</dt>
-                <img class="imgpantalla" src="img/seis11.png" alt="Imagen seis11"><br><br>
+                <img class="imgpantalla" src="img/seis11.svg" alt="Imagen seis11"><br><br>
                 <dt><b>KEY file</b>: esta opción solo se completará en el caso de que el certificado sea de una <b>CA </b>pagado.</dt><br>
                 <dt><b>PFX file</b>: similar al caso del certificado crt solo que ahora seleccionaremos el archivo .pfx y <b>Abrir</b>.</dt>
-                <img class="imgpantalla" src="img/seis11.png" alt="Imagen seis11"><br><br>
+                <img class="imgpantalla" src="img/seis11.svg" alt="Imagen seis11"><br><br>
                 <dt><b>Passphrase</b>: colocamos el mismo password que al momento de crear los certificados.</dt>
-                <img class="imgpantalla" src="img/seis12.png" alt="Imagen seis12"><br><br>
+                <img class="imgpantalla" src="img/seis12.svg" alt="Imagen seis12"><br><br>
                 <dt><b>Add</b>: por último clickeamos en add.</dt>
-                <img class="imgpantalla" src="img/seis13.png" alt="Imagen seis13"><br><br>
+                <img class="imgpantalla" src="img/seis13.svg" alt="Imagen seis13"><br><br>
 
                 <div class="nevega">
                     <div class="anterior">
